@@ -28,7 +28,7 @@ stationRpc="http://127.0.0.1:8545"
 stationAPI="http://127.0.0.1:8545"
 stationType="evm" 
 
-./build/tracks init --daRpc "$daRpc" --daKey "$daKey" --daType "$daType" --moniker "$moniker" --stationRpc "$stationRpc" --stationAPI "$stationAPI" --stationType "$stationType"
+./build/tracks init --daRpc "disperser-holesky.eigenda.xyz" --daKey "" --daType "eigen" --moniker "station" --stationRpc "http://127.0.0.1:8545" --stationAPI "http://127.0.0.1:8545" --stationType "evm"
 ```
 
 ## Step 4: Initialize the Prover
@@ -47,7 +47,7 @@ Create keys for the junction account. If the keys are not already created, use t
 accountName="dummy"
 accountPath=".tracks/junction-accounts/keys"
 
-./build/tracks keys junction --accountName "$accountName" --accountPath "$accountPath"
+./build/tracks keys junction --accountName station --accountPath $HOME/.tracks/junction-accounts/keys
 ```
 
 Alternatively, you can import an account using a mnemonic:
@@ -79,7 +79,7 @@ jsonRPC="https://junction-testnet-rpc.synergynodes.com/" # junction testnet
 bootstrapNode="/ip4/192.168.1.24/tcp/2300/p2p/12D3KooWFoN66sCWotff1biUcnBE2vRTmYJRHJqZy27x1EpBB6AM"
 info="EVM Track"
 
-./build/tracks create-station --tracks "$accountAddressArray" --accountName "$accountName" --accountPath "$accountPath" --jsonRPC "$jsonRPC" --info "$info" --bootstrapNode "$bootstrapNode"
+./build/tracks create-station --accountName station --accountPath $HOME/.tracks/junction-accounts/keys --jsonRPC "https://junction-rpc.meganode.org/" --info "EVM Track" --tracks <wallet> --bootstrapNode "/ip4/192.168.1.24/tcp/2300/p2p/node-id"
 ```
 
 ## Step 8: Start the Tracks
